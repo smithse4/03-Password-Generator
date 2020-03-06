@@ -6,26 +6,55 @@ function generatePassword() {
   console.log("Generating my password!");
 }
 
-// Prompt the user for password length
-var passwordLength = prompt("How many characters would you like in your password?")
+// Input variables:
+var confirmSpecialCharacters;
+var confirmNumbers;
+var confirmLowerLetters;
+var confirmUpperLetters;
+
+// Possible password character options:
+var specialCharacters = ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "^", "|",];
+var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var lowerLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upperLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+
+// User clicks "Generate Password" button to start generate password functiom:
+// function promptUser(){
+// Prompt the user for password length:
+  var passwordLength = prompt("How many characters would you like in your password? The number of characters in your password must be between 8 and 128.");
+
+    if(parseInt(passwordLength) >= 8 && parseInt(passwordLength) <=128){
+      alert("Your passwaord will have " + parseInt(passwordLength) + " characters.")
+    } else {
+      alert("You must enter a number to generate password length. Refresh page to try again.")
+    }
+
+   
+
+// Make sure they entered a number:
+  // if(userInput === "Left" || userInput === "Right"){
+  //   console.log(userInput);
+   
+  // }else{
+  //    promptUser("You must enter a number to generate password length.")
+  // }
 
 // Check to see if the user actually entered a length
-// Using boolean prompts, confirm if the following 4 character types are permitted in users password.
+
+
+// Boolean prompts to confirm if the following 4 character types are permitted in users password:
   // 1. Special characters
-  var special = [!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\", "]", "^", "_", "{", "|", "}", "~"];
-  var specialCharacters = confirm("Are special characters okay in your password?")
+  var specialCharacters = confirm("Are special characters okay in your password?");
 
-    // .2 Numbers
-    var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    var numCharacters = confirm("Are numeric characters okay in your password?")
+  // .2 Numbers?
+  var numCharacters = confirm("Are numeric characters okay in your password?");
 
-    // 3. Lower case
-    var lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-    var lowerCharacters = confirm("Are lowercase characters okay in your password?")
+  // 3. Lower case?
+  var lowerCharacters = confirm("Are lowercase characters okay in your password?");
 
-    // 4. upper case
-    var upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"] 
-    var upperCharacters = confirm("Are uppercase characters okay in your password?")
+  // 4. Upper case?
+  var upperCharacters = confirm("Are uppercase characters okay in your password?");
 
     // Accomodate answers!generate password based on user specifications
     // NOTE: user specifications come from confirms
@@ -42,6 +71,8 @@ function writePassword() {
   passwordText.value = password;
 
 }
+
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);

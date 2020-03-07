@@ -52,6 +52,75 @@ if (!confirmSpecialCharacters && !confirmNumberCharacters && !confirmLowerCharac
   alert("You must choose at least one character type.");
 }
 
+// Conditionals for user character selections:
+
+// 4 true options:
+else if (confirmSpecialCharacters && confirmNumberCharacters && confirmLowerCharacters && confirmUpperCharacters) {
+  choices = character.concat(specialCharacters, numbers, lowerLetters, upperLetters);
+}
+// 3 true, special character false:
+else if (confirmNumberCharacters && confirmLowerCharacters && confirmUpperCharacters) {
+  choices = character.concat(numbers, lowerLetters, upperLetters);
+}
+// 3 true, numbers false:
+else if (confirmSpecialCharacters && confirmLowerCharacters && confirmUpperCharacters) {
+  choices = character.concat(specialCharacters, lowerLetters, upperLetters);
+}
+// 3 true, lowerLetters false:
+else if (confirmSpecialCharacters && confirmNumberCharacters && confirmUpperCharacters) {
+  choices = character.concat(specialCharacters, numbers, upperLetters);
+}
+// 3 true, upperLetters false:
+else if (confirmSpecialCharacters && confirmNumberCharacters && confirmLowerCharacters) {
+  choices = character.concat(specialCharacters, numbers, lowerLetters);
+}
+// 2 true (Special Characters, Numbers), 2 false:
+else if (confirmSpecialCharacters && confirmNumberCharacters) {
+  choices = character.concat(specialCharacters, numbers);
+}
+// 2 true (Special Characters, lowerLetters), 2 false:
+else if (confirmSpecialCharacters && confirmLowerLetters) {
+  choices = character.concat(specialCharacters, lowerLetters);
+}
+// 2 true (Special Characters, UpperLetters), 2 false:
+else if (confirmSpecialCharacters && confirmUpperCharacters) {
+  choices = character.concat(specialCharacters, upperLetters);
+}
+// 2 true (Numbers, lowerLetters), 2 false:
+else if (confirmNumberCharacters && confirmLowerCharacters) {
+  choices = character.concat(numbers, lowerLetters);
+}
+// 2 true (Numbers, upperLetters), 2 false:
+else if (confirmNumberCharacters && confirmUpperCharacters) {
+  choices = character.concat(numbers, upperLetters);
+}
+// 2 true (lowerLetters, upperLetters), 2 false:
+else if (confirmLowerCharacters && confirmUpperCharacters) {
+  choices = character.concat(lowerLetters, upperLetters);
+}
+// 1 true specialCharacters:
+else if (confirmSpecialCharacters) {
+  choices = specialCharacters;
+}
+// 1 true numbers
+else if (confirmNumberCharacters) {
+  choices = numbers;
+}
+// 1 true lowerLetters:
+else if (confirmLowerCharacters) {
+  choices = lowerLetters;
+}
+// 1 true upperLetters:
+else if (confirmUpperCharacters) {
+  choices = upperLetters;
+}
+
+
+
+
+
+
+
     // Accomodate answers!generate password based on user specifications
     // NOTE: user specifications come from confirms
     // Save as variables: 

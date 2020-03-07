@@ -6,11 +6,16 @@ function generatePassword() {
   console.log("Generating my password!");
 }
 
+// Add event listener to generate button
+generateBtn.addEventListener("click", function(){
+
 // // Input variables:
 // var confirmSpecialCharacters;
 // var confirmNumbers;
 // var confirmLowerLetters;
 // var confirmUpperLetters;
+
+var passwordEl = document.querySelector("#password");
 
 // Possible password character options:
 var specialCharacters = ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "^", "|",];
@@ -18,6 +23,28 @@ var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var lowerLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
+var allCharacters = specialCharacters + numbers + lowerLetters + upperLetters
+var spNumLow = specialCharacters + numbers + lowerLetters
+var spNumUp = specialCharacters + numbers + upperLetters
+var spLowUp = specialCharacters + lowerLetters + upperLetters
+var numLowUp = numbers + lowerLetters + upperLetters
+var spNum = specialCharacters + numbers
+var spLow = specialCharacters + lowerLetters
+var spUp = specialCharacters + upperLetters
+var numLow = numbers + lowerLetters
+var numUp = numbers + upperLetters
+var lowUp = lowerLetters + upperLetters
+
+
+// Event listener for generate button
+// generateBtn.addEventListener("click", writePassword) {
+//   var characters =
+//     (confirmSpecialCharacters === true) ? characters += specialCharacters : "";
+//     (confirmNumberCharacters === true) ? characters += numbers : "";
+//     (confirmLowerCharacters === true) ? characters += lowerLetters : "";
+//     (confirmUpperCharacters === true) ? characters += upperLetters : "";
+//     generateBtn.value = writePassword(userPWLength.value, characters);
+// }
 
 // User clicks "Generate Password" button to start generate password functiom:
 // function promptUser(){
@@ -28,7 +55,7 @@ var upperLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", 
 
 // Confirm password is a number between 8 and 128:
     if(userPWLength >= 8 && userPWLength <=128){
-      alert("Your passwaord will have " + userPWLength + " characters.")
+      alert("Your password will have " + userPWLength + " characters.")
     } else {
       alert("You must enter a number to generate password length. Refresh page to try again.")
     }
@@ -52,82 +79,149 @@ if (!confirmSpecialCharacters && !confirmNumberCharacters && !confirmLowerCharac
   alert("You must choose at least one character type.");
 }
 
+
+
+
 // Conditionals for user character selections:
 
 // 4 true options:
-else if (confirmSpecialCharacters && confirmNumberCharacters && confirmLowerCharacters && confirmUpperCharacters) {
-  choices = character.concat(specialCharacters, numbers, lowerLetters, upperLetters);
+if ((confirmSpecialCharacters === true) && (confirmNumberCharacters === true) && (confirmLowerCharacters === true) && (confirmUpperCharacters === true)) {
+  for (i=0; i < userPWLength; i++) {
+    let character = Math.floor(Math.random() * allCharacters.length);
+    newPassword += allCharacters.charAt(character, character + 1);
+  }
 }
-// 3 true, special character false:
-else if (confirmNumberCharacters && confirmLowerCharacters && confirmUpperCharacters) {
-  choices = character.concat(numbers, lowerLetters, upperLetters);
+// 3 true, special characters false:
+else if ((confirmSpecialCharacters === false) && (confirmNumberCharacters === true) && (confirmLowerCharacters === true) && (confirmUpperCharacters === true)) {
+  for (i=0; i < userPWLength; i++) {
+    let character = Math.floor(Math.random() * numLowUp.length);
+    newPassword += numLowUp.charAt(character, character + 1);
+  }
 }
 // 3 true, numbers false:
-else if (confirmSpecialCharacters && confirmLowerCharacters && confirmUpperCharacters) {
-  choices = character.concat(specialCharacters, lowerLetters, upperLetters);
+else if ((confirmSpecialCharacters === true) && (confirmNumberCharacters === false) && (confirmLowerCharacters === true) && (confirmUpperCharacters === true)) {
+  for (i=0; i < userPWLength; i++) {
+    let character = Math.floor(Math.random() * spLowUp.length);
+    newPassword += spLowUp.charAt(character, character + 1);
+  }
 }
 // 3 true, lowerLetters false:
-else if (confirmSpecialCharacters && confirmNumberCharacters && confirmUpperCharacters) {
-  choices = character.concat(specialCharacters, numbers, upperLetters);
+else if ((confirmSpecialCharacters === true) && (confirmNumberCharacters === true) && (confirmLowerCharacters === false) && (confirmUpperCharacters === true)) {
+  for (i=0; i < userPWLength; i++) {
+    let character = Math.floor(Math.random() * spNumUp.length);
+    newPassword += spNumUp.charAt(character, character + 1);
+  }
 }
 // 3 true, upperLetters false:
-else if (confirmSpecialCharacters && confirmNumberCharacters && confirmLowerCharacters) {
-  choices = character.concat(specialCharacters, numbers, lowerLetters);
+else if ((confirmSpecialCharacters === true) && (confirmNumberCharacters === true) && (confirmLowerCharacters === true) && (confirmUpperCharacters === false)) {
+  for (i=0; i < userPWLength; i++) {
+    let character = Math.floor(Math.random() * spNumLow.length);
+    newPassword += spNumLow.charAt(character, character + 1);
+  }
 }
 // 2 true (Special Characters, Numbers), 2 false:
-else if (confirmSpecialCharacters && confirmNumberCharacters) {
-  choices = character.concat(specialCharacters, numbers);
+else if ((confirmSpecialCharacters === true) && (confirmNumberCharacters === true) && (confirmLowerCharacters === false) && (confirmUpperCharacters === false)) {
+  for (i=0; i < userPWLength; i++) {
+    let character = Math.floor(Math.random() * spNum.length);
+    newPassword += spNum.charAt(character, character + 1);
+  }
 }
 // 2 true (Special Characters, lowerLetters), 2 false:
-else if (confirmSpecialCharacters && confirmLowerLetters) {
-  choices = character.concat(specialCharacters, lowerLetters);
+else if ((confirmSpecialCharacters === true) && (confirmNumberCharacters === false) && (confirmLowerCharacters === true) && (confirmUpperCharacters === false)) {
+  for (i=0; i < userPWLength; i++) {
+    let character = Math.floor(Math.random() * spLow.length);
+    newPassword += spLow.charAt(character, character + 1);
+  }
 }
 // 2 true (Special Characters, UpperLetters), 2 false:
-else if (confirmSpecialCharacters && confirmUpperCharacters) {
-  choices = character.concat(specialCharacters, upperLetters);
+else if ((confirmSpecialCharacters === true) && (confirmNumberCharacters === false) && (confirmLowerCharacters === false) && (confirmUpperCharacters === true)) {
+  for (i=0; i < userPWLength; i++) {
+    let character = Math.floor(Math.random() * spUp.length);
+    newPassword += spUp.charAt(character, character + 1);
+  }
 }
 // 2 true (Numbers, lowerLetters), 2 false:
-else if (confirmNumberCharacters && confirmLowerCharacters) {
-  choices = character.concat(numbers, lowerLetters);
+else if ((confirmSpecialCharacters === false) && (confirmNumberCharacters === true) && (confirmLowerCharacters === true) && (confirmUpperCharacters === false)) {
+  for (i=0; i < userPWLength; i++) {
+    let character = Math.floor(Math.random() * numLow.length);
+    newPassword += numLow.charAt(character, character + 1);
+  }
 }
 // 2 true (Numbers, upperLetters), 2 false:
-else if (confirmNumberCharacters && confirmUpperCharacters) {
-  choices = character.concat(numbers, upperLetters);
+else if ((confirmSpecialCharacters === false) && (confirmNumberCharacters === true) && (confirmLowerCharacters === false) && (confirmUpperCharacters === true)) {
+  for (i=0; i < userPWLength; i++) {
+    let character = Math.floor(Math.random() * numUp.length);
+    newPassword += numUp.charAt(character, character + 1);
+  }
 }
 // 2 true (lowerLetters, upperLetters), 2 false:
-else if (confirmLowerCharacters && confirmUpperCharacters) {
-  choices = character.concat(lowerLetters, upperLetters);
+else if ((confirmSpecialCharacters === false) && (confirmNumberCharacters === false) && (confirmLowerCharacters === true) && (confirmUpperCharacters === true)) {
+  for (i=0; i < userPWLength; i++) {
+    let character = Math.floor(Math.random() * LowUp.length);
+    newPassword += LowUp.charAt(character, character + 1);
+  }
 }
 // 1 true specialCharacters:
-else if (confirmSpecialCharacters) {
-  choices = specialCharacters;
+else if ((confirmSpecialCharacters === true) && (confirmNumberCharacters === false) && (confirmLowerCharacters === false) && (confirmUpperCharacters === false)) {
+  for (i=0; i < userPWLength; i++) {
+    let character = Math.floor(Math.random() * specialCharacters.length);
+    newPassword += specialCharacters.charAt(character, character + 1);
+  }
 }
 // 1 true numbers
-else if (confirmNumberCharacters) {
-  choices = numbers;
+else if ((confirmSpecialCharacters === false) && (confirmNumberCharacters === true) && (confirmLowerCharacters === false) && (confirmUpperCharacters === false)) {
+  for (i=0; i < userPWLength; i++) {
+    let character = Math.floor(Math.random() * numbers.length);
+    newPassword += numbers.charAt(character, character + 1);
+  }
 }
 // 1 true lowerLetters:
-else if (confirmLowerCharacters) {
-  choices = lowerLetters;
+else if ((confirmSpecialCharacters === false) && (confirmNumberCharacters === false) && (confirmLowerCharacters === true) && (confirmUpperCharacters === false)) {
+  for (i=0; i < userPWLength; i++) {
+    let character = Math.floor(Math.random() * lowerLetters.length);
+    newPassword += lowerLetters.charAt(character, character + 1);
+  }
 }
 // 1 true upperLetters:
-else if (confirmUpperCharacters) {
-  choices = upperLetters;
+else if ((confirmSpecialCharacters === false) && (confirmNumberCharacters === false) && (confirmLowerCharacters === false) && (confirmUpperCharacters === true)) {
+  for (i=0; i < userPWLength; i++) {
+    let character = Math.floor(Math.random() * upperLetters.length);
+    newPassword += upperLetters.charAt(character, character + 1);
+  }
 }
 
+  return newPassword;
+})
+
+// function writePassword(userPWLength, characters){
+//   var password = "";
+
+//   for(var i = 0; i < userPWLength; i++){
+//     password += characters.charAt(Math.floor(Math.random() * characters.length));
+//   }
+
+//   return password;
+// }
 
 
+// Instructor provided:
 
+// var allCharacters = [specialCharacters, numbers, lowerLetters, upperLetters]
 
+// if ((confirmSpecialCharacters === true) && (confirmNumberCharacters === true) && (confirmLowerCharacters === true) && (confirmUpperCharacters === true)) {
+//   for (i = 0; i < userPWLength; i++) {
+//     let character = Math.floor(Math.random() * allCharacters.length);
+//     newPassword += allCharacters.charAt(character, character + 1);
+// }
 
+// function writePassword(userPWLength, allCharacters) {
+//   var password = generatePassword();
+//   var passwordText = document.querySelector("#password");
 
-    // Accomodate answers!generate password based on user specifications
-    // NOTE: user specifications come from confirms
-    // Save as variables: 
-      // for(var i = 0; i <=USER #; i++){
+//   passwordText.value = password;
 
-      // }
-      // problem: how to go get special charactors - SEE LINK IN README
+// }
+// }
 
-// Conditionals for password:
-
+// Add event listener to generate button
+// generateBtn.addEventListener("click", writePassword);

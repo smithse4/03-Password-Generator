@@ -1,6 +1,11 @@
 # 03 JavaScript: Password Generator
 
+
+## Description of Homework
+
+```
 Create an application that generates a random password based on user-selected criteria. This app will run in the browser and feature dynamically updated HTML and CSS powered by your JavaScript code. It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
+```
 
 ## User Story
 
@@ -20,6 +25,11 @@ WHEN prompted for password criteria
 THEN I select which criteria to include in the password
 WHEN prompted for the length of the password
 THEN I choose a length of at least 8 characters and no more than 128 characters
+```
+The following image demonstates the prompts asking for the number of characters needed in generated password:
+![How many characters](screenshots/How-many-characters.png)
+
+```
 WHEN prompted for character types to include in the password
 THEN I choose lowercase, uppercase, numeric, and/or special characters
 WHEN I answer each prompt
@@ -29,6 +39,15 @@ THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 ```
+The following image displays a generated password:
+![Generated password](screenshots/generated-password.png)
+
+The following images show the error messages received if 
+* A password length is chosen outside of the numbers 8-128.
+* No character set is chosen for the password.
+
+![Number error](screenshots/number-error.png)
+![Character error](screenshots/character-type-error.png)
 
 ## Links
 

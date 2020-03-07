@@ -44,7 +44,7 @@ var lowUp = lowerLetters + upperLetters
     if(userPWLength >= 8 && userPWLength <=128){
       alert("Your password will have " + userPWLength + " characters.")
     } else {
-      alert("You must enter a number to generate password length. Refresh page to try again.")
+      alert("You must enter a number between 8 and 128 to generate password length. Refresh page to try again.")
     }
 
 // Boolean prompts to confirm if the following 4 character types are permitted in users password:

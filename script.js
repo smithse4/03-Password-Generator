@@ -9,15 +9,8 @@ function generatePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", function(){
 
-// // Input variables:
-// var confirmSpecialCharacters;
-// var confirmNumbers;
-// var confirmLowerLetters;
-// var confirmUpperLetters;
 
 var passwordEl = document.querySelector("#password");
-var btngenerateEl = document.querySelector("#generate");
-var btncopyEl = document.querySelector("#copy");
 
 // Possible password character options:
 var specialCharacters = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
@@ -25,8 +18,10 @@ var numbers = "0123456789";
 var lowerLetters = "abcdefghijklmnopqrstuvwxyz";
 var upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+// String for the produced password
 var newPassword = "";
 
+// Character combinations
 var allCharacters = specialCharacters + numbers + lowerLetters + upperLetters
 var spNumLow = specialCharacters + numbers + lowerLetters
 var spNumUp = specialCharacters + numbers + upperLetters
@@ -40,18 +35,6 @@ var numUp = numbers + upperLetters
 var lowUp = lowerLetters + upperLetters
 
 
-// Event listener for generate button
-// generateBtn.addEventListener("click", writePassword) {
-//   var characters =
-//     (confirmSpecialCharacters === true) ? characters += specialCharacters : "";
-//     (confirmNumberCharacters === true) ? characters += numbers : "";
-//     (confirmLowerCharacters === true) ? characters += lowerLetters : "";
-//     (confirmUpperCharacters === true) ? characters += upperLetters : "";
-//     generateBtn.value = writePassword(userPWLength.value, characters);
-// }
-
-// User clicks "Generate Password" button to start generate password functiom:
-// function promptUser(){
 // Prompt the user for password length:
   var passwordLength = prompt("How many characters would you like in your password? The number of characters in your password must be between 8 and 128.");
 
@@ -61,7 +44,7 @@ var lowUp = lowerLetters + upperLetters
     if(userPWLength >= 8 && userPWLength <=128){
       alert("Your password will have " + userPWLength + " characters.")
     } else {
-      alert("You must enter a number to generate password length. Refresh page to try again.")
+      alert("You must enter a number between 8 and 128 to generate password length. Refresh page to try again.")
     }
 
 // Boolean prompts to confirm if the following 4 character types are permitted in users password:
@@ -196,36 +179,3 @@ else if ((confirmSpecialCharacters === false) && (confirmNumberCharacters === fa
 
   passwordEl.textContent = newPassword;
 })
-
-// function writePassword(userPWLength, characters){
-//   var password = "";
-
-//   for(var i = 0; i < userPWLength; i++){
-//     password += characters.charAt(Math.floor(Math.random() * characters.length));
-//   }
-
-//   return password;
-// }
-
-
-// Instructor provided:
-
-// var allCharacters = [specialCharacters, numbers, lowerLetters, upperLetters]
-
-// if ((confirmSpecialCharacters === true) && (confirmNumberCharacters === true) && (confirmLowerCharacters === true) && (confirmUpperCharacters === true)) {
-//   for (i = 0; i < userPWLength; i++) {
-//     let character = Math.floor(Math.random() * allCharacters.length);
-//     newPassword += allCharacters.charAt(character, character + 1);
-// }
-
-// function writePassword(userPWLength, allCharacters) {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-
-//   passwordText.value = password;
-
-// }
-// }
-
-// Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);

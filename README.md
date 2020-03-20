@@ -27,7 +27,7 @@ WHEN prompted for the length of the password
 THEN I choose a length of at least 8 characters and no more than 128 characters
 ```
 The following image demonstates the prompts asking for the number of characters needed in generated password:
-![How many characters](screenshots/How-many-characters.png)
+![Character Prompt](Assets/screenshots/prompt.png)
 
 ```
 WHEN prompted for character types to include in the password
@@ -40,19 +40,19 @@ WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 ```
 The following image displays a generated password:
-![Generated password](screenshots/generated-password.png)
+![Generated password](Assets/screenshots/generated-pw.png)
 
 The following images show the error messages received if 
 * A password length is chosen outside of the numbers 8-128.
 * No character set is chosen for the password.
 
-![Number error](screenshots/number-error.png)
-![Character error](screenshots/character-type-error.png)
+![Number error](Assets/screenshots/number-error.png)
+![Character error](Assets/screenshots/character-type-error.png)
 
 ## Links
 
 Linked Github repository and deployed application for reference:
 
-[Github repository](https://github.com/smithse4/03-javascript)
+[Github repository](https://github.com/smithse4/03-Password-Generator)
 
-[Deployed application](https://smithse4.github.io/03-javascript/)
+[Deployed application](https://smithse4.github.io/03-Password-Generator/)
